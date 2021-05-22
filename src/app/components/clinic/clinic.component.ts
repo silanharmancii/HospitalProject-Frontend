@@ -11,7 +11,6 @@ export class ClinicComponent implements OnInit {
 
   clinics: Clinic[]=[];
   currentClinic:Clinic;
-  dataLoaded = false;
 
   constructor(private clinicService:ClinicService) { }
 
@@ -22,13 +21,13 @@ export class ClinicComponent implements OnInit {
   getClinics(){
     this.clinicService.getClinics().subscribe(response=>{
       this.clinics=response.data;
-      this.dataLoaded=true;
     })
   }
 
   setCurrentClinic(clinic:Clinic){
-
+    this.currentClinic = clinic;
   }
+
   getCurrentClinicClass(clinic:Clinic){
     if(clinic==this.currentClinic){
       return "list-group-item active"
@@ -36,4 +35,13 @@ export class ClinicComponent implements OnInit {
       return "list-group-item"
     }
   }
+
+  getAllClinicClass(){
+    if(!this.currentClinic){
+     return "list-group-item active"
+    }
+    else{
+     return "list-group-item"
+    }
+  } 
 }

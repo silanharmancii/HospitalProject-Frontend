@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Clinic } from 'src/app/models/clinic';
 import { Equipment } from 'src/app/models/equipment';
+import { ClinicService } from 'src/app/services/clinic.service';
 import { EquipmentService } from 'src/app/services/equipment.service';
 import { __awaiter } from 'tslib';
 
@@ -15,11 +17,14 @@ export class EquipmentUpdateComponent implements OnInit {
 
   equipment:Equipment;
   equipmentUpdateForm:FormGroup;
+  clinics: Clinic[] = [];
+  clinic:Clinic;
 
   constructor(private formBuilder:FormBuilder,
     private equipmentService:EquipmentService,
     private toastrService:ToastrService,
-    private activatedRoute:ActivatedRoute
+    private activatedRoute:ActivatedRoute,
+    private clinicService:ClinicService
     ) { }
 
   ngOnInit(): void {
@@ -31,6 +36,7 @@ export class EquipmentUpdateComponent implements OnInit {
       if (params['equipmentId']) {       
         await this.getEquipmentById(params['equipmentId']);
         this.createEquipmentUpdateForm();
+        this.getClinics();
       }
     });
   }
@@ -39,7 +45,7 @@ export class EquipmentUpdateComponent implements OnInit {
   this.equipmentUpdateForm=this.formBuilder.group({
     equipmentId:[{value:this.equipment.equipmentId,disabled:true}],
     equipmentName:[this.equipment.equipmentName,Validators.required],
-    clinicId:[this.equipment.clinicId,Validators.required],
+    clinicName:[,Validators.required],
     procurementDate:[this.equipment.procurementDate,Validators.required],
     unitsInStock:[this.equipment.unitsInStock, Validators.required],
     unitPrice:[this.equipment.unitPrice,Validators.required],
@@ -48,6 +54,12 @@ export class EquipmentUpdateComponent implements OnInit {
   })
   }
 
+  getClinics() {
+    this.clinicService.getClinics().subscribe((response) => {
+      this.clinics = response.data;
+      console.log(response.data)
+    });
+  }
   update(){
     if(this.equipmentUpdateForm.valid){
       let equipmentModel:Equipment = Object.assign({},this.equipmentUpdateForm.getRawValue())  

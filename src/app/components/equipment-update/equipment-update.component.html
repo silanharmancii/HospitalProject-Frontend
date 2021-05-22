@@ -21,11 +21,23 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="clinicId">Klinik Id</label>
-                        <div class="form-group">
-                            <input type="number" id="clinicId" formControlName="clinicId" class="form-control"
-                                />
-                        </div>
+                        <label for="clinicId">Klinik Adı</label>
+                        <div class="input-group">
+                              <select
+                                class="form-group form-select"
+                                formControlName="clinicId"
+                                type="number"
+                                id="clinicId"
+                                >
+                                <option
+                                  class="form-control"
+                                  type="number"
+                                  [value]="clinic.clinicId"
+                                  *ngFor="let clinic of clinics">
+                                  {{ clinic.clinicName }} 
+                                </option>
+                              </select> 
+                          </div>
                     </div>
                     <div class="mb-3">
                         <label for="procurementDate">Temin Edilme Tarihi</label>
