@@ -1,0 +1,67 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="title">Ekipman Güncelle</h5>
+            </div>
+            <div class="card-body" *ngIf="equipmentUpdateForm">
+                <form [formGroup]="equipmentUpdateForm">
+                    <div class="mb-3">
+                        <label for="equipmentId">Ekipman Id</label>
+                        <div class="form-group" aria-disabled="true">
+                            <input type="text" id="equipmentId" formControlName="equipmentId" class="form-control" 
+                                />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="equipmentName">Ekipman Adı</label>
+                        <div class="form-group">
+                            <input type="text" id="equipmentName" formControlName="equipmentName" class="form-control"
+                                />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="clinicId">Klinik Id</label>
+                        <div class="form-group">
+                            <input type="number" id="clinicId" formControlName="clinicId" class="form-control"
+                                />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="procurementDate">Temin Edilme Tarihi</label>
+                        <div class="form-group">
+                            <input type="date" id="procurementDate" formControlName="procurementDate" class="form-control"
+                                 />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="unitsInStock">Adedi</label>
+                        <div class="form-group">
+                            <input type="number" id="unitsInStock" formControlName="unitsInStock" class="form-control"
+                                />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="unitPrice">Fiyatı</label>
+                        <div class="form-group">
+                            <input type="number" id="unitPrice" formControlName="unitPrice" class="form-control"
+                                 />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="usageRate">Kullanım Oranı</label>
+                        <div class="form-group">
+                            <input type="number" id="usageRate" formControlName="usageRate" class="form-control"
+                                 />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-primary" (click)="update()" >Güncelle</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

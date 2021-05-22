@@ -1,0 +1,59 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="title">Ekipman Ekle</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="equipmentAddForm">
+                    <div class="mb-3">
+                        <label for="equipmentName">Ekipman Adı</label>
+                        <div class="form-group">
+                            <input type="text" id="equipmentName" formControlName="equipmentName" class="form-control"
+                                placeholder="Ekipman Adı" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="clinicId">Klinik Id</label>
+                        <div class="form-group">
+                            <input type="number" id="clinicId" formControlName="clinicId" class="form-control"
+                                placeholder="Klinik Id" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="unitPrice">Temin Edilme Tarihi</label>
+                        <div class="form-group">
+                            <input type="date" id="procurementDate" formControlName="procurementDate" class="form-control"
+                                placeholder="Temin Edilme Tarihi" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="unitsInStock">Adedi</label>
+                        <div class="form-group">
+                            <input type="number" id="unitsInStock" formControlName="unitsInStock" class="form-control"
+                                placeholder="Adedi" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="unitPrice">Fiyatı</label>
+                        <div class="form-group">
+                            <input type="number" id="unitPrice" formControlName="unitPrice" class="form-control"
+                                placeholder="Fiyatı" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="unitPrice">Kullanım Oranı</label>
+                        <div class="form-group">
+                            <input type="number" id="usageRate" formControlName="usageRate" class="form-control"
+                                placeholder="Kullanım Oranı" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-primary" (click)="add()" >Ekle</button>
+            </div>
+        </div>
+    </div>
+</div>
+

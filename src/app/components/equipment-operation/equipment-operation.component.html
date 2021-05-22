@@ -1,0 +1,33 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Ekipman Kodu</th>
+        <th scope="col">Adı</th>
+        <th scope="col">Bulunduğu Klinik</th>
+        <th scope="col">Temin Edilme Tarihi</th>
+        <th scope="col">Adet Bilgisi</th>
+        <th scope="col">Birim Fiyatı</th>
+        <th scope="col">Kullanım Oranı</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let equipment of equipments ">
+        <th scope="row">{{equipment.equipmentId }}</th>
+        <td>{{equipment.equipmentName}}</td>
+        <td>{{equipment.clinicName}}</td>
+        <td>{{equipment.procurementDate}}</td>
+        <td>{{equipment.unitsInStock}}</td>
+        <td>{{equipment.unitPrice | currency}}</td>
+        <td>{{equipment.usageRate | percent}}</td>
+        <td>
+            <button routerLink="/equipments/operations/add" type="button" class="btn btn-warning">Ekle</button>
+        </td>
+        <td>
+          <button routerLink="/equipments/operations/update/{{equipment.equipmentId}}" type="button" class="btn btn-success">Güncelle</button>
+      </td>
+        <td>
+            <button type="button" (click)="delete(equipment)" class="btn btn-error">Sil</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

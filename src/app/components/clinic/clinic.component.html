@@ -1,0 +1,8 @@
+<h2 routerLink="/equipments">Tüm Ekipmanlar</h2>
+<ul class="list-group">
+    
+    <li (click)="setCurrentClinic(clinic)" 
+    routerLink="/equipments/clinic/{{clinic.clinicId}}"
+    *ngFor="let clinic of clinics" 
+    [class]="getCurrentClinicClass(clinic)">{{clinic.clinicName}}</li>
+  </ul>

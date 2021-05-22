@@ -1,0 +1,23 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Klinik Kodu</th>
+        <th scope="col">Klinik Adı</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let clinic of clinics ">
+        <th scope="row">{{clinic.clinicId }}</th>
+        <td>{{clinic.clinicName}}</td>
+        <td>
+            <button routerLink="/clinics/operations/add" type="button" class="btn btn-warning">Ekle</button>
+        </td>
+        <td>
+          <button routerLink="/clinics/operations/update/{{clinic.clinicId}}" type="button" class="btn btn-success">Güncelle</button>
+      </td>
+        <td>
+            <button type="button" (click)="delete(clinic)" class="btn btn-error">Sil</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

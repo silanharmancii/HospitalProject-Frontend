@@ -1,0 +1,32 @@
+<div class="mb-3">
+  <label for="filterText" class="form-label"></label>
+  <input [(ngModel)]="filterText" type="text" class="form-control" id="filterText" 
+  placeholder="Ekipman ara">
+</div>
+<div *ngIf="filterText.length>2" class="alert alert-success">
+  {{filterText}} aradınız.
+</div>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Ekipman Kodu</th>
+        <th scope="col">Adı</th>
+        <th scope="col">Bulunduğu Klinik</th>
+        <th scope="col">Temin Edilme Tarihi</th>
+        <th scope="col">Adet Bilgisi</th>
+        <th scope="col">Birim Fiyatı</th>
+        <th scope="col">Kullanım Oranı</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let equipment of equipments | filterPipe:filterText | sortBy: 'asc':'equipmentName'">
+        <th scope="row">{{equipment.equipmentId }}</th>
+        <td>{{equipment.equipmentName}}</td>
+        <td>{{equipment.clinicName}}</td>
+        <td>{{equipment.procurementDate}}</td>
+        <td>{{equipment.unitsInStock}}</td>
+        <td>{{equipment.unitPrice | currency }}</td>
+        <td>{{equipment.usageRate | percent }}</td>
+      </tr>
+    </tbody>
+  </table>
